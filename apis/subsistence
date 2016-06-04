@@ -30,3 +30,8 @@ function yWave(colour)
   line(i) sleep()
 end
 end
+
+function fastSleep()
+  os.queueEvent("subsleep")
+  os.pullEvent()
+end
