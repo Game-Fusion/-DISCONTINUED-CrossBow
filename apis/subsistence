@@ -1,0 +1,32 @@
+-- Subsistence Graphical [GFX] API
+-- [C] 2016 Game Fusion
+
+function line(y)
+  term.setCursorPos(1,y)
+  term.clearLine()
+end
+
+--function xWave(colour) broken right now
+--  local w,h = term.getSize()
+--  for i = 1,w do
+--  term.setBackgroundColour(colours[colour])
+--  term.setCursorPos(i,1)
+--  term.clearLine()
+-- end
+--end
+
+function yWave(colour)
+  local w,h = term.getSize()
+  term.setBackgroundColour(colours[colour])
+  for i = 1,h do
+  line(i) sleep(0.1)
+end
+end
+
+function yWave(colour)
+  local w,h = term.getSize()
+  term.setBackgroundColour(colours[colour])
+  for i = 1,h do
+  line(i) sleep()
+end
+end
