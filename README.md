@@ -13,3 +13,5 @@ Featuring:
 • A true next-gen experience, with magnificent visuals coating the system in graphical brilliance
 
 • And more!
+
+Note: CrossBow files start with root being at this repo's "files" folder
