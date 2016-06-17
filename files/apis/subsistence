@@ -35,3 +35,17 @@ function fastSleep()
   os.queueEvent("subsleep")
   os.pullEvent()
 end
+
+function menuAnim(oc)
+  if oc == "open" then
+  for i=1,12 do
+    paintutils.drawLine(i,2,i,19,colours.orange)
+    sleep()
+  end
+  elseif oc == "close" then
+  for i=12,1,-1 do
+    paintutils.drawLine(i,2,i,19,colours.white)
+    sleep()
+  end
+  end
+end
