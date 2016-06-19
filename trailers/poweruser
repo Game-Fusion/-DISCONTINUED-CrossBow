@@ -16,4 +16,5 @@ term.setBackgroundColour(colours.blue)
 term.setTextColour(colours.white)
 term.clear()
 centerSlow(8,"Game Fusion Presents...")
-centerSlow(9,"
+sleep(1.5)
+centerSlow(8,"CrossBow.")
