@@ -1,6 +1,8 @@
+##NOTE: CrossBow has been discontinued for some time now, however this GitHub Repository will stay online in case it can be repurposed or finished in future.
+
 # CrossBow
 
-The next generation of consoles is upon us, and with that Game Fusion and Nova have decided to usher in the new generation in style. Say hello to the future.
+The next generation of consoles is dawning upon us, and with that Game Fusion and Nova have decided to usher in the new generation in style. Say hello to the future.
 
 Featuring:
 
