@@ -10,39 +10,39 @@ if requiresColour then
 end
  
 local function displayNitrosoftTitle()
-        term.clear()
-        local _w,_h = term.getSize()
+        sub.clr()
+        local _w,_h = sub.winSize()
         local _t1,_t2 = "nitrosoft", "games"
-        term.setCursorPos(math.floor(_w/2-#_t1), math.floor(_h/2))
-        if term.isColour() then term.setTextColour(colours.blue) end
+        sub.cursPos(math.floor(_w/2-#_t1), math.floor(_h/2))
+        if term.isColour() then sub.setTxt("blue") end
         term.write(_t1)
-        term.setCursorPos(math.floor(_w/2-#_t2/2),math.floor(_h/2)+1)
-        term.setTextColour(colours.white)
+        sub.cursPos(math.floor(_w/2-#_t2/2),math.floor(_h/2)+1)
+        sub.setTxt("white")
         term.write(_t2)
-        if term.isColour() then term.setTextColour(colours.red) end
-        term.setCursorPos(math.floor(_w/2-#_t1), math.floor(_h/2)+2)
+        if term.isColour() then sub.setTxt("red") end
+        sub.cursPos(math.floor(_w/2-#_t1), math.floor(_h/2)+2)
         term.write(string.rep("-",#_t1*2))
         if term.isColour() then
-                term.setBackgroundColour(colours.green)
-                term.setCursorPos(_w/2+#_t1-4, math.floor(_h/2)-2)
+                sub.setBg("green")
+                sub.cursPos(_w/2+#_t1-4, math.floor(_h/2)-2)
                 term.write("  ")
-                term.setCursorPos(_w/2+#_t1-4, math.floor(_h/2)-1)
+                sub.cursPos(_w/2+#_t1-4, math.floor(_h/2)-1)
                 term.write("  ")
-                term.setBackgroundColour(colours.lime)
-                term.setCursorPos(_w/2+#_t1-3, math.floor(_h/2)-1)
+                sub.setBg("lime")
+                sub.cursPos(_w/2+#_t1-3, math.floor(_h/2)-1)
                 term.write("  ")
-                term.setCursorPos(_w/2+#_t1-3, math.floor(_h/2))
+                sub.cursPos(_w/2+#_t1-3, math.floor(_h/2))
                 term.write("  ")
         end
-        term.setBackgroundColour(colours.black)
-        term.setTextColour(colours.white)
-        term.setCursorPos(1,_h)
+        sub.setBg("black")
+        sub.setTxt("white")
+        sub.cursPos(1,_h)
         term.write("v"..version)
         os.pullEvent("key")
 end
 displayNitrosoftTitle()
  
-local w,h = term.getSize()
+local w,h = sub.winSize()
  
 local levelbg = {colours.lightBlue, colours.blue, colours.black}
 local level = {}
@@ -77,25 +77,25 @@ local function makeLevel()
 end
  
 local function updateTile(x,y)
-        term.setCursorPos(x, y)
-        if level[y][x] == nil then term.setBackgroundColour(bgcol)
-        else term.setBackgroundColour(colours.white) end
+        sub.cursPos(x, y)
+        if level[y][x] == nil then sub.bg(bgcol)
+        else sub.setBg("white") end
         term.write(" ")
 end
  
 local function drawPlayer()
         if py <= 0 then return end
         if level[py][px] == nil then
-                term.setCursorPos(px, py)
+                sub.cursPos(px, py)
                 term.setTextColour(pcol)
-                term.setBackgroundColour(bgcol)
+                sub.bg(bgcol)
                 term.write("&")
         end
 end
  
 local draw = function(self)
-        term.setCursorPos(self.x,self.y)
-        term.setBackgroundColour(colours.white)
+        sub.cursPos(self.x,self.y)
+        sub.setBg("white")
         term.write(" ")
 end
  
@@ -107,9 +107,9 @@ local function drawLevel()
         end
         drawPlayer()
         for i=1,#flakes do
-                term.setCursorPos(flakes[i].x, flakes[i].y)
-                term.setBackgroundColour(colours.white)
-                tern.write(" ")
+                sub.cursPos(flakes[i].x, flakes[i].y)
+                sub.setBg("white")
+                term.write(" ") -- What the fuck?
         end
 end
  
@@ -120,14 +120,14 @@ local function addFlake()
 end
  
 local function updateBG()
-        term.setBackgroundColour(bgcol)
-        term.setTextColour(colours.white)
+        sub.bg(bgcol)
+        sub.setTxtColour("white")
         for i=1,#flakes do
                 updateTile(flakes[i].x, flakes[i].y)
                 flakes[i].y = flakes[i].y + 1
                 if level[flakes[i].y][flakes[i].x] == nil then
-                        term.setCursorPos(flakes[i].x, flakes[i].y)
-                        term.setBackgroundColour(bgcol)
+                        sub.cursPos(flakes[i].x, flakes[i].y)
+                        sub.bg(bgcol)
                         term.write(".")
                 end
         end
@@ -167,7 +167,7 @@ end
 local function transitionLevel()
         levelnum = levelnum + 1
         bgcol = levelbg[math.min(levelnum, #levelbg)]
-        term.setBackgroundColour(bgcol)
+        sub.bg(bgcol)
         local ttimer = os.startTimer(0.1)
         local inc = 0
         while inc < h do
@@ -251,5 +251,4 @@ end
  
 makeLevel()
 update()
-term.setBackgroundColour(colours.black)
-term.clear()
+sub.clrBg("black")
