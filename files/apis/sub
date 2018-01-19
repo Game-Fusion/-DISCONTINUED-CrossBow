@@ -1,5 +1,5 @@
 -- Subsistence Graphical [GFX] API
--- [C] 2016-2017 Game Fusion
+-- [C] 2016-2018 Game Fusion
 
 function line(y)
   term.setCursorPos(1,y)
